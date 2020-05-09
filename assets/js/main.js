@@ -32,8 +32,8 @@ $("#search").on("click", function(e){
 
     e.preventDefault();
 
-    // $("#todayCard").empty();
-    // $(".row").empty();
+    $("#nest").empty();
+    $(".forecast").empty();
     
     //getItem();
 
@@ -106,9 +106,16 @@ $("#search").on("click", function(e){
         var tMinF = $('<div id="min"></div>').text("Low: " + tempMin.toFixed(0));
         
         var weather = response.weather[0].description;
-        //var weatherIcon = response.weather[0].icon;
-        //console.log(weather);
-        //console.log(weatherIcon);
+        
+        // if (weather === "clear sky"){
+        //     $(".sky").attr("src", "../img/sunny.png");
+        // } 
+        // else if(weather === "broken clouds"){
+        //     $(".sky").attr("src", "../img/partial.png");
+        //  }
+        //  else if(weather === "rain"){
+        //      $(".sky").attr("src", "../img/rain.png");
+        //  }
     
         var w = $('<div id="w"></div>').text(weather);
     
