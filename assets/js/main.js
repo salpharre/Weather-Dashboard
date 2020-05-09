@@ -66,7 +66,21 @@ $.ajax({
     //target the div #todayCard
     //and add divs to it to show current weather
     
-    
+    /*
+    var lon = response.coord.lon
+    var lat = response.coord.lat ---for onecall ajax call
+    response.main ---convert to fahrenheit
+        response.main.feels_like
+        response.main.temp
+        response.main.temp_max
+        response.main.temp_min
+    response.weather ---for loop?
+
+    */
+
+
+
+
 
 
 });
@@ -75,9 +89,9 @@ $.ajax({
 
 //var city = "San Francisco,us"
 
-var lat = 37.77;
+var lat = ["37.77"];
 
-var lon = -122.42;
+var lon = ["-122.42"];
 
 
 var queryURLSeven = "https://api.openweathermap.org/data/2.5/onecall?lat="
