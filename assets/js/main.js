@@ -1,7 +1,7 @@
 
 //var userLocation = $("#location").val(); ---so it's global
 //initialize var userLocation;
-/*
+
 $("#search").on("click", function(e){
 
 
@@ -11,35 +11,24 @@ $("#search").on("click", function(e){
     //refer to the global var userLocation
 
     var userLocation = $("#location").val();//value is inserted into city for queryURLCurrent
-    console.log(userLocation);
+    //console.log(userLocation);
+
+    /*grabs the id of the span element located under div with an id of todayCard,
+    it grabs the id in order to add the user Input from the search bar to the webpage
+    */
+    $("#weatherLocation").text(userLocation)
+
 
     //save val() to localstorage
     //wishlist: have value in search show up as an option when click into search bar
 
     // put both ajaxes inside here
 
-    var APIKey = "adcd424f400eb6c61768801157796f11";
-
-    var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q="
-    + userLocation + "&appid=" + APIKey;
-    
-    $.ajax({
-        url: queryURLCurrent,
-        method: "GET"
-    }).then(function(response){
-        console.log(response);
-    
-        //target the div #todayCard
-        //and add divs to it to show current weather
-        
-    
-    });
-
 
 
     
 })
-*/
+
 
 //checking to see if ajax works and what to grab 
 
@@ -73,6 +62,10 @@ $.ajax({
     //console.log(lon);
     //console.log(lat);
 
+
+    ///Make new divs for card-body div
+
+    
     var feelsLike = response.main.feels_like;
     var feelsLikeF = (feelsLike - 273.15) * 1.80 + 32;
     //console.log(feelsLike);
