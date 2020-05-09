@@ -66,27 +66,42 @@ $.ajax({
     //target the div #todayCard
     //and add divs to it to show current weather
     
-    /*
+    //for onecall ajax call
     var lon = response.coord.lon
-    var lat = response.coord.lat ---for onecall ajax call
-    response.main ---convert to fahrenheit
-        response.main.feels_like
-        response.main.temp
-        response.main.temp_max
-        response.main.temp_min
-    response.weather ---for loop?
+    var lat = response.coord.lat 
 
-    */
+    //console.log(lon);
+    //console.log(lat);
 
+    var feelsLike = response.main.feels_like;
+    var feelsLikeF = (feelsLike - 273.15) * 1.80 + 32;
+    //console.log(feelsLike);
+    //console.log(feelsLikeF);
+    //use .toFixed(0) to have Farenheit rounded to a whole number
 
+    var currentTemp = (response.main.temp - 273.15) * 1.80 + 32;;
+    //var currentTempF = 
+    console.log(currentTemp);
+    // console.log(currentTempF);
 
+    var tempMax = (response.main.temp_max - 273.15) * 1.80 + 32;
+    console.log(tempMax);
+    
+    var tempMin = (response.main.temp_min - 273.15) * 1.80 + 32;
+    console.log(tempMin);
+    
+    
+    var weather = response.weather[0].description;
+    //var weatherIcon = response.weather[0].icon;
+    console.log(weather);
+    //console.log(weatherIcon);
 
 
 
 });
 
         
-
+/*
 //var city = "San Francisco,us"
 
 var lat = ["37.77"];
@@ -103,11 +118,36 @@ $.ajax({
 }).then(function(response){
     console.log(response);
 
+    var daily = response.daily;
+    //console.log(daily);
+
+    var tempDay;
+    var tempEve;
+    var tempMax;
+    var tempMin;
+    var weather;
+
+    for (var i = 0; i < daily.length; i++){
+        var tempDay = (daily[i].temp.day - 273) * 1.80 + 32;
+        //make div and append
+        var tempEve = (daily[i].temp.eve - 273) * 1.80 + 32;
+        var tempMax = (daily[i].temp.eve - 273) * 1.80 + 32;
+        var tempMin = (daily[i].temp.eve - 273) * 1.80 + 32;
+        var weather = daily[i].weather[0].description;
 
 
+
+    console.log(tempDay);
+    console.log(tempEve);
+    console.log(tempMax);
+    console.log(tempMin);
+    console.log(weather);
+
+    }
+    
 
 })
-
+*/
 
 //when they click into the search bar, a little pop appears to say 
 //how to type it in "no spaces a comma inbetween, except when the
