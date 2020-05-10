@@ -37,13 +37,10 @@ $("#search").on("click", function(e){
     $("#nest").empty();
     $(".forecast").empty();
     
-    //getItem();
 
-
-    //refer to the global var userLocation
 
     var userLocation = $("#location").val();//value is inserted into city for queryURLCurrent
-    //console.log(userLocation);
+    
 
     /*grabs the id of the span element located under div with an id of todayCard,
     it grabs the id in order to add the user Input from the search bar to the webpage
@@ -53,8 +50,7 @@ $("#search").on("click", function(e){
 
     // var storeWeather = $("#weatherLocation").val();
     // console.log(storeWeather);
-    //save val() to localstorage
-    //wishlist: have value in search show up as an option when click into search bar
+    
     
     // put both ajaxes inside here
     var APIKey = "adcd424f400eb6c61768801157796f11";
@@ -68,15 +64,9 @@ $("#search").on("click", function(e){
     }).then(function(response){
         console.log(response);
     
-        //target the div #todayCard
-        //and add divs to it to show current weather
         
-        //for onecall ajax call
         var lon = response.coord.lon
         var lat = response.coord.lat 
-    
-        //console.log(lon);
-        //console.log(lat);
         
     
     
@@ -87,48 +77,33 @@ $("#search").on("click", function(e){
         a newly created div, with an id of feels for styling anchor, that
         prints the rounded temp number to nestle under card-body div for current weather*/
         var fLF = $('<div id="feels"></div>').text("Feels Like: " + feelsLikeF.toFixed(0));
-        //console.log(feelsLike);
-        //console.log(feelsLikeF);
-        //use .toFixed(0) to have Farenheit rounded to a whole number
+      
     
         var currentTemp = (response.main.temp - 273.15) * 1.80 + 32;;
-        //var currentTempF = 
-        //console.log(currentTemp);
-        // console.log(currentTempF);
+       
     
         var cTF = $('<div id="current"></div>').text("Temperature (F): " + currentTemp.toFixed(0));
     
         var tempMax = (response.main.temp_max - 273.15) * 1.80 + 32;
-        //console.log(tempMax);
+        
     
         var tMF = $('<div id="max"></div>').text("High: " + tempMax.toFixed(0));
         
         var tempMin = (response.main.temp_min - 273.15) * 1.80 + 32;
-        //console.log(tempMin);
+    
+
         var tMinF = $('<div id="min"></div>').text("Low: " + tempMin.toFixed(0));
         
         var weather = response.weather[0].main;
-        
-    
-        /* For a Future Feature: A conditional that would check the weather, from the response, to see if
-        it's cloudy, clear or raining. If any of them are true then an img element in html will gain an attribute of src and
-        image from the assets folder*/
 
-        // if (weather === "clear"){
-        //     $(".sky").attr("src", "../img/smallsun.png");
-        // } 
-        // else if(weather === "clouds"){
-        //     $(".sky").attr("src", "../img/cloudy.png");
-        //  }
-        //  else if(weather === "rain"){
-        //      $(".sky").attr("src", "../img/smallrain.png");
-        //  }
-    
 
 
         var w = $('<div id="w"></div>').text(weather);
+
+        var iconCurrent = "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png";
+        var iC = $("<img>").attr("src", iconCurrent);
     
-        $("#nest").append(w, cTF, fLF, tMF, tMinF)
+        $("#nest").append(iC, w, cTF, fLF, tMF, tMinF)
 
         
         /*var for url key in ajax call, uses the same APIKey as used by current weather.
@@ -154,21 +129,8 @@ $("#search").on("click", function(e){
                 var tempMin = (daily[i].temp.min - 273) * 1.80 + 32;
                 var dayWeather = daily[i].weather[0].main;
 
+                var iconDaily = "https://openweathermap.org/img/w/" + daily[i].weather[0].icon + ".png";
 
-                /* For a future feature:
-                The conditional will check the response to see if the weather is clear, cloudy or rainy.
-                Depending on what conditional is true an img element in the html will gain a src attribute 
-                and an image that will appear in the card of each forecasted day*/
-
-                // if (dayWeather[i] === "clear"){
-                //     $(".sky").attr("src", "../img/smallsun.png");
-                // } 
-                // else if(dayWeather[i] === "clouds"){
-                //     $(".sky").attr("src", "../img/cloudy.png");
-                //  }
-                //  else if(dayWeather[i] === "rain"){
-                //      $(".sky").attr("src", "../img/smallrain.png");
-                //  }
 
 
                var tD = $("<div id='day'></div>").text("Daytime (F): " + tempDay.toFixed(0)); 
@@ -177,7 +139,9 @@ $("#search").on("click", function(e){
                var tMin = $("<div id='dayMin'></div>").text("Min: " + tempMin.toFixed(0));
                var dW = $("<div id='dayweather'></div>").text("Weather: " + dayWeather);
 
-                $("#" + [i]).append(dW, tD, tE, tMax, tMin);
+               var iC = $("<img>").attr("src", iconDaily);
+
+                $("#" + [i]).append(iC, dW, tD, tE, tMax, tMin);
 
 
 
