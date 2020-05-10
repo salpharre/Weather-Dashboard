@@ -1,5 +1,39 @@
 #todayCard {
-    background-color: burlywood;
+    height: 160px;
     
 }
 
+
+.day {
+    text-align: center;
+}
+
+/* .col-8{
+    padding-top: 5px;
+} */
+
+
+body {
+    background-color:#a8d1f3;
+}
+
+#currentDay {
+    font-size: 18px;
+}
+
+#currentHour {
+    font-size: 18px;
+}
+
+.city {
+    font-size: 40px;
+    font-weight: 200;
+    line-height: 1.4;
+    padding-top: 7px;
+}
+
+.jumbotron-fluid {
+    margin-bottom: 2.5em;
+    border-bottom: groove 1px;
+    background-color:#f5ffff;
+}

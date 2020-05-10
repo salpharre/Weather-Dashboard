@@ -1,24 +1,15 @@
+/*Below is for a future feature, that despite a refresh of the page, the weather info will persist.
+*/
 
-//var userLocation = $("#location").val(); ---so it's global
-//initialize var userLocation;
-//localStorage.clear();
-
-var userLocation;
-var valueToday;
-
-// function getItem(){
-//     $("#").val(localStorage.getItem("nest"));
-// }
-
-
-// $("#nest").val(localStorage.getItem("nest0"));
-// $("#nest").val(localStorage.getItem("nest1"));
-// $("#nest").val(localStorage.getItem("nest2"));
-// $("#nest").val(localStorage.getItem("nest3"));
-// $("#nest").val(localStorage.getItem("nest4"));
-
-// $("#weatherLocation").val(localStorage.getItem("location"));
 /*
+$("#nest").val(localStorage.getItem("nest0"));
+$("#nest").val(localStorage.getItem("nest1"));
+$("#nest").val(localStorage.getItem("nest2"));
+$("#nest").val(localStorage.getItem("nest3"));
+$("#nest").val(localStorage.getItem("nest4"));
+
+$("#weatherLocation").val(localStorage.getItem("location"));
+
 $("#0").val(JSON.parse(localStorage.getItem("number")));
 $("#1").val(JSON.parse(localStorage.getItem("number")));
 $("#2").val(JSON.parse(localStorage.getItem("number")));
@@ -27,6 +18,16 @@ $("#4").val(JSON.parse(localStorage.getItem("number")));
 $("#5").val(JSON.parse(localStorage.getItem("number")));
 $("#6").val(JSON.parse(localStorage.getItem("number")));
 */
+
+
+currentDay();
+
+currentHour();
+
+var userLocation;
+
+
+
 $("#search").on("click", function(e){
 
 
@@ -105,18 +106,22 @@ $("#search").on("click", function(e){
         //console.log(tempMin);
         var tMinF = $('<div id="min"></div>').text("Low: " + tempMin.toFixed(0));
         
-        var weather = response.weather[0].description;
+        var weather = response.weather[0].main;
         
-        // if (weather === "clear sky"){
-        //     $(".sky").attr("src", "../img/sunny.png");
-        // } 
-        // else if(weather === "broken clouds"){
-        //     $(".sky").attr("src", "../img/partial.png");
-        //  }
-        //  else if(weather === "rain"){
-        //      $(".sky").attr("src", "../img/rain.png");
-        //  }
+
+
+        if (weather === "clear"){
+            $(".sky").attr("src", "../img/smallsun.png");
+        } 
+        else if(weather === "clouds"){
+            $(".sky").attr("src", "../img/cloudy.png");
+         }
+         else if(weather === "rain"){
+             $(".sky").attr("src", "../img/smallrain.png");
+         }
     
+
+         
         var w = $('<div id="w"></div>').text(weather);
     
         $("#nest").append(w, cTF, fLF, tMF, tMinF)
@@ -134,29 +139,37 @@ $("#search").on("click", function(e){
             console.log(response);
 
             var daily = response.daily;
-            //console.log(daily);
+            
 
-            // var tempDay;
-            // var tempEve;
-            // var tempMax;
-            // var tempMin;
-            // var weather;
 
             for (var i = 0; i < (daily.length - 1); i++){
                 var tempDay = (daily[i].temp.day - 273) * 1.80 + 32;
-                //make div and append
+                
                 var tempEve = (daily[i].temp.eve - 273) * 1.80 + 32;
                 var tempMax = (daily[i].temp.max - 273) * 1.80 + 32;
                 var tempMin = (daily[i].temp.min - 273) * 1.80 + 32;
-                var dayWeather = daily[i].weather[0].description;
+                var dayWeather = daily[i].weather[0].main;
 
-               var tD = $("<div id='day'></div>").text("Daytime: " + tempDay.toFixed(0)); 
+
+                if (dayWeather[i] === "clear"){
+                    $(".sky").attr("src", "../img/smallsun.png");
+                } 
+                else if(dayWeather[i] === "clouds"){
+                    $(".sky").attr("src", "../img/cloudy.png");
+                 }
+                 else if(dayWeather[i] === "rain"){
+                     $(".sky").attr("src", "../img/smallrain.png");
+                 }
+
+
+               var tD = $("<div id='day'></div>").text("Daytime (F): " + tempDay.toFixed(0)); 
                var tE = $("<div id='eve'></div>").text("Evening: " + tempEve.toFixed(0));
                var tMax = $("<div id='dayMax'></div>").text("Max: " + tempMax.toFixed(0));
                var tMin = $("<div id='dayMin'></div>").text("Min: " + tempMin.toFixed(0));
                var dW = $("<div id='dayweather'></div>").text("Weather: " + dayWeather);
 
                 $("#" + [i]).append(dW, tD, tE, tMax, tMin);
+
 
 
                 //var numberValue = $("#" + [i]).val("#day", "#eve", "#dayMax", "#dayMin", "#dayweather");
@@ -187,31 +200,20 @@ $("#search").on("click", function(e){
     
 });
 
+var mDay;
+var mHour;
 
 
+function currentDay(){
+    var mDay = moment().format("LL");
 
+    $("#currentDay").html(mDay);
+};
 
-
-// function setNestIds(){
+function currentHour(){
     
-// }
+    var mHour = moment().format("LT");
 
+    $("#currentHour").html(mHour);
 
-
-
-
-//var nest
-
-    //trying to grab all the text in each div (with ids) that is nested under the div with id of nest
-    //var nestValue = JSON.stringify($("#nest").html());
-    //console.log(nestValue)
-
-    //localStorage.setItem("nest", nestValue)
-
-        
-
-
-
-//when they click into the search bar, a little pop appears to say 
-//how to type it in "no spaces a comma inbetween, except when the
-// city is more than one word" --- davis,california or san francisco,california
+};
