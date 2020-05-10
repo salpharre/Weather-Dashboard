@@ -1,23 +1,4 @@
-/*Below is for a future feature, that despite a refresh of the page, the weather info will persist.
-*/
 
-/*
-$("#nest").val(localStorage.getItem("nest0"));
-$("#nest").val(localStorage.getItem("nest1"));
-$("#nest").val(localStorage.getItem("nest2"));
-$("#nest").val(localStorage.getItem("nest3"));
-$("#nest").val(localStorage.getItem("nest4"));
-
-$("#weatherLocation").val(localStorage.getItem("location"));
-
-$("#0").val(JSON.parse(localStorage.getItem("number")));
-$("#1").val(JSON.parse(localStorage.getItem("number")));
-$("#2").val(JSON.parse(localStorage.getItem("number")));
-$("#3").val(JSON.parse(localStorage.getItem("number")));
-$("#4").val(JSON.parse(localStorage.getItem("number")));
-$("#5").val(JSON.parse(localStorage.getItem("number")));
-$("#6").val(JSON.parse(localStorage.getItem("number")));
-*/
 
 /**/
 
@@ -137,17 +118,13 @@ $("#search").on("click", function(e){
                var tE = $("<div id='eve'></div>").text("Evening: " + tempEve.toFixed(0));
                var tMax = $("<div id='dayMax'></div>").text("Max: " + tempMax.toFixed(0));
                var tMin = $("<div id='dayMin'></div>").text("Min: " + tempMin.toFixed(0));
-               var dW = $("<div id='dayweather'></div>").text("Weather: " + dayWeather);
+               var dW = $("<div id='dayweather'></div>").text(dayWeather);
 
                var iC = $("<img>").attr("src", iconDaily);
 
                 $("#" + [i]).append(iC, dW, tD, tE, tMax, tMin);
 
 
-
-                //var numberValue = $("#" + [i]).val("#day", "#eve", "#dayMax", "#dayMin", "#dayweather");
-
-                //JSON.stringify(localStorage.setItem("number", numberValue))
             }
             
 
@@ -156,20 +133,6 @@ $("#search").on("click", function(e){
         
     });
 
-    
-    // localStorage.setItem("location", userLocation);
-    
-    // var nestFeels = $("#feels").text();
-    // var nestW = $("#w").text();
-    // var nestCurrent = $("#current").text();
-    // var nestMax = $("#max").text();
-    // var nestMin = $("#min").text();
-
-    // localStorage.setItem("nest0", nestFeels);
-    // localStorage.setItem("nest1", nestW);
-    // localStorage.setItem("nest2", nestCurrent);
-    // localStorage.setItem("nest3", nestMax);
-    // localStorage.setItem("nest4", nestMin);
     
 });
 
