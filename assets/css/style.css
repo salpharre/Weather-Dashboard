@@ -6,22 +6,25 @@
 
 .day {
     text-align: center;
-}
+    background-color: rgb(250, 210, 183);
+} 
 
-/* .col-8{
-    padding-top: 5px;
+/* .forecast {
+    
 } */
+
+.seven, .today {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Arial Narrow Bold', sans-serif;
+}
 
 
 body {
     background-color:#a8d1f3;
 }
 
-#currentDay {
-    font-size: 18px;
-}
-
-#currentHour {
+#currentDay, #currentHour {
     font-size: 18px;
 }
 
