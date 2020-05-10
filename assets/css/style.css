@@ -1,13 +1,13 @@
-#todayCard {/*targets the top card for the current weather*/
+#todayCard { /*targets the top card for the current weather*/
     height: 220px; /*makes the card taller so it sits at a fixed height as it waits to be filled*/
 }
 
 .day { /*targets the card-header for the seven cards for the seven day forecast*/
     text-align: center; /*centers the text*/
-    background-color: rgb(250, 210, 183);/*background color*/
+    background-color: rgb(250, 210, 183); /*background color*/
 } 
 
-.seven, .today {/*targets the titles for the current weather and seven day forecast cards*/
+.seven, .today { /*targets the titles for the current weather and seven day forecast cards*/
     font-size: 18px;
     font-weight: bold;
     font-family: 'Arial Narrow Bold', sans-serif;
@@ -21,15 +21,15 @@ body { /*targets the body of the page giving it a specific color*/
     font-size: 18px;
 }
 
-.city {/*targets the city inputed in the input element that is printed into the jumbotron*/
+.city { /*targets the city inputed in the input element that is printed into the jumbotron*/
     font-size: 40px;
     font-weight: 200;
-    line-height: 1.4;/*the space around the text*/
+    line-height: 1.4; /*the space around the text*/
     padding-top: 7px;
 }
 
-.jumbotron-fluid {/*targets the jumbotron that holds the title, moments and city name and state*/
-    margin-bottom: 2.5em; /*pushes the container (that holds the search input and cards) down so it's a bit more spread out*/
+.jumbotron-fluid { /*targets the jumbotron that holds the title, moments and city name and state*/
+    margin-bottom: 2.5em;  /*pushes the container (that holds the search input and cards) down so it's a bit more spread out*/
     border-bottom: groove 1px; 
     background-color:#f5ffff;
 }
