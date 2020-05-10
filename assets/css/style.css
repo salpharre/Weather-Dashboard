@@ -3,22 +3,16 @@
     
 }
 
-
 .day {
     text-align: center;
     background-color: rgb(250, 210, 183);
 } 
-
-/* .forecast {
-    
-} */
 
 .seven, .today {
     font-size: 18px;
     font-weight: bold;
     font-family: 'Arial Narrow Bold', sans-serif;
 }
-
 
 body {
     background-color:#a8d1f3;

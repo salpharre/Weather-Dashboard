@@ -19,6 +19,7 @@ $("#5").val(JSON.parse(localStorage.getItem("number")));
 $("#6").val(JSON.parse(localStorage.getItem("number")));
 */
 
+/**/
 
 currentDay();
 
@@ -108,20 +109,23 @@ $("#search").on("click", function(e){
         
         var weather = response.weather[0].main;
         
+    
+        /* For a Future Feature: A conditional that would check the weather, from the response, to see if
+        it's cloudy, clear or raining. If any of them are true then an img element in html will gain an attribute of src and
+        image from the assets folder*/
 
-
-        if (weather === "clear"){
-            $(".sky").attr("src", "../img/smallsun.png");
-        } 
-        else if(weather === "clouds"){
-            $(".sky").attr("src", "../img/cloudy.png");
-         }
-         else if(weather === "rain"){
-             $(".sky").attr("src", "../img/smallrain.png");
-         }
+        // if (weather === "clear"){
+        //     $(".sky").attr("src", "../img/smallsun.png");
+        // } 
+        // else if(weather === "clouds"){
+        //     $(".sky").attr("src", "../img/cloudy.png");
+        //  }
+        //  else if(weather === "rain"){
+        //      $(".sky").attr("src", "../img/smallrain.png");
+        //  }
     
 
-         
+
         var w = $('<div id="w"></div>').text(weather);
     
         $("#nest").append(w, cTF, fLF, tMF, tMinF)
@@ -151,15 +155,20 @@ $("#search").on("click", function(e){
                 var dayWeather = daily[i].weather[0].main;
 
 
-                if (dayWeather[i] === "clear"){
-                    $(".sky").attr("src", "../img/smallsun.png");
-                } 
-                else if(dayWeather[i] === "clouds"){
-                    $(".sky").attr("src", "../img/cloudy.png");
-                 }
-                 else if(dayWeather[i] === "rain"){
-                     $(".sky").attr("src", "../img/smallrain.png");
-                 }
+                /* For a future feature:
+                The conditional will check the response to see if the weather is clear, cloudy or rainy.
+                Depending on what conditional is true an img element in the html will gain a src attribute 
+                and an image that will appear in the card of each forecasted day*/
+
+                // if (dayWeather[i] === "clear"){
+                //     $(".sky").attr("src", "../img/smallsun.png");
+                // } 
+                // else if(dayWeather[i] === "clouds"){
+                //     $(".sky").attr("src", "../img/cloudy.png");
+                //  }
+                //  else if(dayWeather[i] === "rain"){
+                //      $(".sky").attr("src", "../img/smallrain.png");
+                //  }
 
 
                var tD = $("<div id='day'></div>").text("Daytime (F): " + tempDay.toFixed(0)); 
